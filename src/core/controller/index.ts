@@ -625,7 +625,7 @@ export class Controller {
 		const workflowToggles = this.stateManager.getWorkspaceStateKey("workflowToggles")
 
 		const currentTaskItem = this.task?.taskId ? (taskHistory || []).find((item) => item.id === this.task?.taskId) : undefined
-		const checkpointTrackerErrorMessage = this.task?.taskState.checkpointTrackerErrorMessage
+		const checkpointTrackerErrorMessage = this.task?.taskState.checkpointManagerErrorMessage
 		const clineMessages = this.task?.messageStateHandler.getClineMessages() || []
 
 		const processedTaskHistory = (taskHistory || [])
@@ -677,6 +677,9 @@ export class Controller {
 			mcpResponsesCollapsed,
 			terminalOutputLineLimit,
 			customPrompt,
+			taskHistory: processedTaskHistory,
+			platform,
+			shouldShowAnnouncement,
 		}
 	}
 
